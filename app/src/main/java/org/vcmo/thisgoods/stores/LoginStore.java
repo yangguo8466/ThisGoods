@@ -22,7 +22,9 @@ public class LoginStore extends Store {
 
     @Override
     public void onAction(Action action) {
+        if (action.getType() == "") {
 
+        }
     }
 
     @Override

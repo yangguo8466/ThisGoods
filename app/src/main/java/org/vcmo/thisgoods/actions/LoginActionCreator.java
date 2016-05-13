@@ -1,7 +1,6 @@
 package org.vcmo.thisgoods.actions;
 
 import org.vcmo.thisgoods.Dispatcher;
-import org.vcmo.thisgoods.model.action.LoginR;
 import org.vcmo.thisgoods.utils.rest.RestAPI;
 import org.vcmo.thisgoods.utils.rest.RestFactory;
 
@@ -31,8 +30,7 @@ public class LoginActionCreator {
 
         //
 //        rest.login(new LoginR(account, pw));
-
-
+        dispatcher.dispatch(new Action(LoginAction.ACTION_LOGIN_SUCCESS, null));
     }
 
 }

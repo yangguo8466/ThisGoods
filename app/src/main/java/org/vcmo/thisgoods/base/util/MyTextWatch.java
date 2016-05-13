@@ -3,16 +3,12 @@ package org.vcmo.thisgoods.base.util;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.widget.EditText;
 
 /**
  * Created by Jie on 2016-05-13.
  */
 public class MyTextWatch implements TextWatcher {
-
-    private static final String TAG = MyTextWatch.class.getSimpleName();
-
     private TextChangCallBack mCallBack;
 
     private int minLength = -1;

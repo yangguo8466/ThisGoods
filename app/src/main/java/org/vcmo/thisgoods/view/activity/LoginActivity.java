@@ -99,7 +99,6 @@ public class LoginActivity extends BaseActivity {
                         textSignal &= ~nowFlag;
                     }
                     btnLogin.setBackgroundResource(((textSignal & 0x03) == 0x03) ? R.drawable.shape_btn_circle_red : R.drawable.shape_btn_circle_gray);
-
                 }
             });
         }
@@ -129,7 +128,7 @@ public class LoginActivity extends BaseActivity {
         if ((textSignal & 0x03) != 0x03)
             return;
 
-        actionCreator.login("user", "pw");
+        actionCreator.login(logingForm.get(0).getText().toString(), logingForm.get(1).getText().toString());
 
     }
 
@@ -174,6 +173,7 @@ public class LoginActivity extends BaseActivity {
             svProgressHUD.dismiss();
             return;
         }
+
         super.onBackPressed();
     }
 }

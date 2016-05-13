@@ -7,6 +7,10 @@ import org.vcmo.thisgoods.model.action.LoginR;
  */
 public class LoginAction extends Action<LoginR> {
 
+    public static final String ACTION_LOGIN_START = "login_start";
+    public static final String ACTION_LOGIN_SUCCESS = "login_success";
+    public static final String ACTION_LOGIN_FAILED = "login_failed";
+
     public LoginAction(String type, LoginR data) {
         super(type, data);
     }

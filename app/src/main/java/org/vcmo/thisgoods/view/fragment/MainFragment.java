@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,22 +23,35 @@ import java.util.List;
 public class MainFragment extends BaseFragment {
 
 
+    private static final String TAG = MainFragment.class.getSimpleName();
+
     View root;
 
     RecyclerView rvContent;
+
+    MyRecycleAdapter mAdapter;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (root == null) {
             root = inflater.inflate(R.layout.fragment_main, container, false);
-            rvContent = (RecyclerView) root.findViewById(R.id.rv_content);
-            rvContent.setLayoutManager(new LinearLayoutManager(getContext()));
+
+            initView();
+
+
         }
 
         init();
 
         return root;
+    }
+
+    private void initView() {
+
+        rvContent = (RecyclerView) root.findViewById(R.id.rv_content);
+        rvContent.setLayoutManager(new LinearLayoutManager(getContext()));
+
     }
 
     private void init() {
@@ -51,14 +65,23 @@ public class MainFragment extends BaseFragment {
             datas.add(data);
         }
 
-        rvContent.setAdapter(new MyRecycleAdapter(datas));
+        mAdapter = new MyRecycleAdapter(datas);
+
+        mAdapter.setItemListener(new MyRecycleAdapter.OnRecyclerItemListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Log.d(TAG, "onClick: " + position);
+            }
+        });
+
+        rvContent.setAdapter(mAdapter);
     }
 
 
     public void goToTop() {
         if (rvContent == null)
             return;
-        
+
         rvContent.smoothScrollToPosition(0);
     }
 

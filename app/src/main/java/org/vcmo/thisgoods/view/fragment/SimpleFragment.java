@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import org.vcmo.thisgoods.R;
 import org.vcmo.thisgoods.view.base.BaseFragment;
 
 /**
@@ -14,15 +15,20 @@ import org.vcmo.thisgoods.view.base.BaseFragment;
  */
 public class SimpleFragment extends BaseFragment {
 
+
     private String strContent;
+    private View root;
+    private TextView tvMessage;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        TextView tvContent = new TextView(getContext());
-        tvContent.setText(strContent);
-        return tvContent;
+        View root = inflater.inflate(R.layout.fragment_simple_layout, container, false);
+        tvMessage = (TextView) root.findViewById(R.id.simple_text);
+
+        tvMessage.setText(strContent);
+        return root;
 
     }
 

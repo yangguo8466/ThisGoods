@@ -7,12 +7,12 @@
         android:title="发现" />
 
     <item
-        android:id="@+id/menu_about"
+        android:id="@+id/menu_center"
         android:icon="@drawable/ic_home"
         android:title="中心" />
 
     <item
-        android:id="@+id/menu_other"
+        android:id="@+id/menu_about"
         android:icon="@drawable/ic_grade"
         android:title="关于" />
 </menu>

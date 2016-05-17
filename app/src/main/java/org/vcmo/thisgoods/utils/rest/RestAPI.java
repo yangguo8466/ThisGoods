@@ -1,8 +1,12 @@
 package org.vcmo.thisgoods.utils.rest;
 
 import org.vcmo.thisgoods.model.action.LoginR;
+import org.vcmo.thisgoods.model.data.MainListData;
 
+import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 /**
@@ -14,4 +18,6 @@ public interface RestAPI {
     String login(@Body LoginR login);
 
 
+    @GET("fetch")
+    Call<MainListData> fetchData();
 }

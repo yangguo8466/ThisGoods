@@ -3,6 +3,7 @@ package org.vcmo.thisgoods.view.activity;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
@@ -14,6 +15,7 @@ import com.roughike.bottombar.OnMenuTabClickListener;
 import org.vcmo.thisgoods.R;
 import org.vcmo.thisgoods.view.base.BaseActivity;
 import org.vcmo.thisgoods.view.base.BaseFragment;
+import org.vcmo.thisgoods.view.fragment.AboutFragment;
 import org.vcmo.thisgoods.view.fragment.MainFragment;
 import org.vcmo.thisgoods.view.fragment.SimpleFragment;
 
@@ -30,6 +32,8 @@ public class MainActivity extends BaseActivity {
 
     private FragmentManager fm = getSupportFragmentManager();
     private FragmentTransaction ft;
+
+    private int currentIndex = 0;
 
     private List<BaseFragment> fragments;
 
@@ -51,14 +55,18 @@ public class MainActivity extends BaseActivity {
         fragments = new ArrayList<>();
         fragments.add(0, MainFragment.newInstance());
         fragments.add(1, SimpleFragment.newInstance("center fragment"));
-        fragments.add(2, SimpleFragment.newInstance("about fragment"));
+        fragments.add(2, AboutFragment.newInstance());
 
         ft = fm.beginTransaction();
         for (BaseFragment f :
                 fragments) {
             ft.add(R.id.main_contain, f);
+            ft.detach(f);
         }
+
+        ft.attach(fragments.get(0));
         ft.commit();
+
 
     }
 
@@ -80,7 +88,7 @@ public class MainActivity extends BaseActivity {
 
                 Log.d(TAG, "onMenuTabSelected: ------- " + index);
 
-                changeFragmentView(fragments.get(index));
+                changeFragmentView(index);
             }
 
             @Override
@@ -98,20 +106,20 @@ public class MainActivity extends BaseActivity {
     }
 
 
-    private void changeFragmentView(BaseFragment fragment) {
+    private void changeFragmentView(int index) {
+
+        if (index >= fragments.size() || index < 0 || index == currentIndex)
+            return;
+
 
         ft = fm.beginTransaction();
 
-        for (BaseFragment f :
-                fragments) {
-            if (f == fragment) {
-                ft.show(f);
-                continue;
-            }
-            ft.hide(f);
-        }
+        ft.detach(fragments.get(currentIndex));
+        ft.attach(fragments.get(index));
 
         ft.commit();
+
+        currentIndex = index;
 
     }
 

@@ -5,7 +5,43 @@
     android:background="@color/backgroundGray"
     android:orientation="vertical">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/white">
 
+
+        <ImageView
+            android:layout_width="?actionBarSize"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@drawable/sel_btn_transparency_gray"
+            android:padding="8dp"
+            android:src="@drawable/ic_chevron_left"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="关于我们"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="16dp"
+        android:src="@drawable/ju_icon" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:text="JUWORE Android版" />
 
 
 </LinearLayout>

@@ -26,7 +26,6 @@ public class AboutFragment extends BaseFragment {
 
     }
 
-
     public static AboutFragment newInstance() {
 
         Bundle args = new Bundle();

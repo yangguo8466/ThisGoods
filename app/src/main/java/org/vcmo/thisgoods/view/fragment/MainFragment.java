@@ -82,7 +82,7 @@ public class MainFragment extends BaseFragment {
         if (rvContent == null)
             return;
 
-        rvContent.smoothScrollToPosition(0);
+        rvContent.scrollToPosition(0);
     }
 
 
